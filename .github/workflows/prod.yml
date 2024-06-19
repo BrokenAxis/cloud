@@ -8,6 +8,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Deploy to production"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   terraform:
@@ -81,4 +87,4 @@ jobs:
 
       - name: Apply Terraform
         run: terraform apply -auto-approve
-        if: github.event_name == 'workflow_dispatch' # Only run on manual trigger
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'true'
