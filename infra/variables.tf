@@ -1,5 +1,5 @@
 variable "region" {
-  type    = string
+  type        = string
   description = "GCP Region"
-  default = "australia-southeast1-a"
+  default     = "australia-southeast1-a"
 }
