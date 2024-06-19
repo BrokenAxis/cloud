@@ -26,9 +26,13 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
       - name: Validate Terraform
         run: terraform validate
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
   plan:
     name: Plan Terraform
@@ -47,9 +51,13 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
       - name: Plan Terraform
         run: terraform plan
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
   apply:
     name: Apply Terraform
@@ -68,6 +76,8 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
       - name: Apply Terraform
         run: terraform apply -auto-approve
