@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.surcharge",
+      "sha256_cert_fingerprints":
+      ["10:2D:FD:22:8B:0B:2F:93:2D:6F:A1:90:A6:83:A2:66:BD:60:E3:A4:F2:77:62:17:79:A9:71:25:74:0E:7F:7A"]
+    }
+  }
+]
