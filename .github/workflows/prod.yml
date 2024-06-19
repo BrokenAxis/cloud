@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - huangb/terraform-init
   pull_request:
     branches:
       - main
@@ -18,8 +17,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          sparse-checkout: ".terraform"
 
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
@@ -40,8 +37,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          sparse-checkout: ".terraform"
 
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
@@ -62,8 +57,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          sparse-checkout: ".terraform"
 
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
