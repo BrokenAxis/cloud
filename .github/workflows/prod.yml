@@ -30,6 +30,9 @@ jobs:
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
 
+      - name: terraform-fmt
+        uses: dflook/terraform-fmt@v1.43.0
+
       - name: Initialize Terraform
         run: terraform init
         env:
@@ -54,9 +57,6 @@ jobs:
 
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
-
-      - name: terraform-fmt
-        uses: dflook/terraform-fmt@v1.43.0
 
       - name: Initialize Terraform
         run: terraform init
