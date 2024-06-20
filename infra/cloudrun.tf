@@ -1,10 +1,11 @@
-resource "google_cloud_run_v2_service" "api-cloudrun" {
+resource "google_cloud_run_v2_service" "main-api-cloudrun" {
   project  = google_project.project.project_id
   location = var.region
-  name     = "api-cloudrun"
+  name     = "main-api-cloudrun"
   template {
     containers {
-        image = "artifactregistry://${var.region}-maven.pkg.dev/${var.project_id}/${var.cloudrun_registry_id}/"
+        # image = "artifactregistry://${var.region}-maven.pkg.dev/${var.project_id}/${var.cloudrun_registry_id}/"
+        image = "gcr.io/cloudrun/hello"
         ports {
             container_port = 8080
         }
