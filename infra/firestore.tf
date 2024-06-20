@@ -14,11 +14,3 @@ resource "google_firestore_database" "firestore" {
 
   depends_on = [google_project_service.firestore]
 }
-
-resource "google_firestore_document" "document" {
-  project     = google_project.project.project_id
-  database    = google_firestore_database.firestore.name
-    
-  collection  = "users"
-  document_id = "profile"
-}
