@@ -1,7 +1,7 @@
 terraform {
-    backend "gcs" {
-        
-    }
+  backend "gcs" {
+
+  }
   required_providers {
     google = {
       source  = "hashicorp/google"
