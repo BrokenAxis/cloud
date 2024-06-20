@@ -37,10 +37,10 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
-          -backend-config="prefix=terraform/state"
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+        #   -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
+        #   -backend-config="prefix=terraform/state"
+        # env:
+        #   GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
       - name: Validate Terraform
         run: terraform validate
