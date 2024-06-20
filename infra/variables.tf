@@ -9,3 +9,9 @@ variable "project_id" {
   description = "GCP Project ID"
   default     = "percentsurcharge-infra"
 }
+
+variable "cloudrun_registry_id" {
+  type        = string
+  description = "Artifact Registry Repository"
+  default     = "cloudrun-registry"
+}
