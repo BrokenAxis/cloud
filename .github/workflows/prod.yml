@@ -23,7 +23,7 @@ jobs:
       run:
         working-directory: ./infra
     env:
-      GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
     steps:
       - name: Checkout repository
@@ -37,10 +37,8 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-        #   -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
-        #   -backend-config="prefix=terraform/state"
-        # env:
-        #   GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
+          -backend-config="prefix=terraform/state"
 
       - name: Validate Terraform
         run: terraform validate
@@ -53,7 +51,7 @@ jobs:
       run:
         working-directory: ./infra
     env:
-      GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
     steps:
       - name: Checkout repository
@@ -78,7 +76,7 @@ jobs:
       run:
         working-directory: ./infra
     env:
-      GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
     steps:
       - name: Checkout repository
