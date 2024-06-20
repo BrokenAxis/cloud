@@ -3,13 +3,11 @@ resource "google_cloud_run_v2_service" "api-cloudrun" {
   location = var.region
   name     = "api-cloudrun"
   template {
-    spec {
-      containers {
+    containers {
         image = google_artifact_registry_repository.repository.repository_url
         ports {
-          container_port = 8080
+            container_port = 8080
         }
-      }
     }
   }
   depends_on = [google_artifact_registry_repository.repository]
