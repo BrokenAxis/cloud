@@ -18,15 +18,7 @@ resource "google_firestore_database" "firestore" {
 resource "google_firestore_document" "document" {
   project     = google_project.project.project_id
   database    = google_firestore_database.firestore.name
+    
   collection  = "users"
   document_id = "profile"
-
-  fields = {
-    name = {
-      string_value = ""
-    }
-    email = {
-      string_value = ""
-    }
-  }
 }
