@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       deploy:
-        description: "Deploy to production"
+        description: "Deploy to Production"
         required: false
         default: false
         type: boolean
@@ -22,6 +22,8 @@ jobs:
     defaults:
       run:
         working-directory: ./infra
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
     steps:
       - name: Checkout repository
@@ -35,13 +37,11 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}" \
+          -backend-config="prefix=terraform/state"
 
       - name: Validate Terraform
         run: terraform validate
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
   plan:
     name: Plan Terraform
@@ -50,6 +50,8 @@ jobs:
     defaults:
       run:
         working-directory: ./infra
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
     steps:
       - name: Checkout repository
@@ -59,14 +61,12 @@ jobs:
         uses: hashicorp/setup-terraform@v3.1.1
 
       - name: Initialize Terraform
-        run: terraform init
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+        run: terraform init \
+          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}" \
+          -backend-config="prefix=terraform/state"
 
       - name: Plan Terraform
         run: terraform plan
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
   apply:
     name: Apply Terraform
@@ -75,6 +75,8 @@ jobs:
     defaults:
       run:
         working-directory: ./infra
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
 
     steps:
       - name: Checkout repository
@@ -85,8 +87,8 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.TERRAFORM_API }}
+          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}" \
+          -backend-config="prefix=terraform/state"
 
       - name: Apply Terraform
         run: terraform apply -auto-approve
