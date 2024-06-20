@@ -1,4 +1,7 @@
 terraform {
+  backend "gcs" {
+
+  }
   required_providers {
     google = {
       source  = "hashicorp/google"
@@ -9,8 +12,9 @@ terraform {
 
 provider "google" {
   project = "percentsurcharge"
+  region  = var.region
 }
 
-resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
-}
+# resource "google_compute_network" "vpc_network" {
+#   name = "terraform-network"
+# }
