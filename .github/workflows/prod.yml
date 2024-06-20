@@ -36,8 +36,8 @@ jobs:
         uses: dflook/terraform-fmt@v1.43.0
 
       - name: Initialize Terraform
-        run: terraform init \
-          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}" \
+        run: terraform init
+          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
           -backend-config="prefix=terraform/state"
 
       - name: Validate Terraform
@@ -61,8 +61,8 @@ jobs:
         uses: hashicorp/setup-terraform@v3.1.1
 
       - name: Initialize Terraform
-        run: terraform init \
-          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}" \
+        run: terraform init
+          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
           -backend-config="prefix=terraform/state"
 
       - name: Plan Terraform
@@ -86,8 +86,8 @@ jobs:
         uses: hashicorp/setup-terraform@v3.1.1
 
       - name: Initialize Terraform
-        run: terraform init \
-          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}" \
+        run: terraform init
+          -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
           -backend-config="prefix=terraform/state"
 
       - name: Apply Terraform
