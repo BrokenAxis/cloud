@@ -7,7 +7,7 @@ variable "region" {
 variable "project_id" {
   type        = string
   description = "GCP Project ID"
-  default     = "percentsurcharge-infra"
+  default     = "percentsurcharge"
 }
 
 variable "cloudrun_registry_id" {
