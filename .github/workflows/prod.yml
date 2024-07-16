@@ -99,6 +99,9 @@ jobs:
         run: terraform init
           -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
           -backend-config="prefix=terraform/state"
+          
+      - name: Import GCP Project to Terraform
+        run: terraform import google_project.project percentsurcharge
 
       - name: Apply Terraform
         run: terraform apply -auto-approve
@@ -128,6 +131,9 @@ jobs:
         run: terraform init
           -backend-config="bucket=${{ secrets.TF_VAR_bucket }}"
           -backend-config="prefix=terraform/state"
+
+      - name: Import GCP Project to Terraform
+        run: terraform import google_project.project percentsurcharge
 
       - name: Apply Terraform
         run: terraform apply -auto-approve
