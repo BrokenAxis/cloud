@@ -3,3 +3,15 @@ variable "region" {
   description = "GCP Region"
   default     = "australia-southeast1-a"
 }
+
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "percentsurcharge-infra"
+}
+
+variable "cloudrun_registry_id" {
+  type        = string
+  description = "Artifact Registry Repository"
+  default     = "cloudrun-registry"
+}

@@ -3,18 +3,15 @@ terraform {
 
   }
   required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "4.51.0"
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = "5.38.0"
     }
   }
 }
 
-provider "google" {
-  project = "percentsurcharge"
-  region  = var.region
-}
+provider "google-beta" {
+  region = var.region
 
-# resource "google_compute_network" "vpc_network" {
-#   name = "terraform-network"
-# }
+  user_project_override = true
+}
