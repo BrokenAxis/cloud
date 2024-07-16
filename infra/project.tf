@@ -1,10 +1,14 @@
-resource "google_project" "default" {
+resource "google_project" "project" {
   name       = var.project_id
   project_id = var.project_id
+
+  labels = {
+    "firebase" = "enabled"
+  }
 }
 
-resource "google_project_service" "default" {
-  project = google_project.default.project_id
+resource "google_project_service" "project" {
+  project = google_project.project.project_id
   for_each = toset([
     "artifactregistry.googleapis.com",
     "firestore.googleapis.com",
